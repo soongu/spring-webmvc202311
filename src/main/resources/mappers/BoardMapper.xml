@@ -5,7 +5,9 @@
 <mapper namespace="com.spring.mvc.chap05.repository.BoardMapper">
 
     <select id="findAll" resultType="board">
-        SELECT * FROM tbl_board
+        SELECT
+            *
+        FROM tbl_board
 
         <if test="type == 'title'">
             WHERE title LIKE CONCAT('%', #{keyword}, '%')
