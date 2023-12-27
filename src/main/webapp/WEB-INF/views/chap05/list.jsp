@@ -21,7 +21,11 @@
 
     <div class="main-title-wrapper">
         <h1 class="main-title">꾸러기 게시판</h1>
-        <button class="add-btn">새 글 쓰기</button>
+
+        <c:if test="${login != null}">
+            <button class="add-btn">새 글 쓰기</button>
+        </c:if>
+
     </div>
 
     <div class="top-section">
@@ -93,27 +97,34 @@
             <ul class="pagination pagination-lg pagination-custom">
 
                 <c:if test="${maker.page.pageNo != 1}">
-                    <li class="page-item"><a class="page-link" href="/board/list?pageNo=1&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">&lt;&lt;</a></li>
+                    <li class="page-item"><a class="page-link"
+                                             href="/board/list?pageNo=1&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">&lt;&lt;</a>
+                    </li>
                 </c:if>
 
                 <c:if test="${maker.prev}">
-                    <li class="page-item"><a class="page-link" href="/board/list?pageNo=${maker.begin - 1}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">prev</a>
+                    <li class="page-item"><a class="page-link"
+                                             href="/board/list?pageNo=${maker.begin - 1}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">prev</a>
                     </li>
                 </c:if>
 
                 <c:forEach var="i" begin="${maker.begin}" end="${maker.end}" step="1">
                     <li data-page-num="${i}" class="page-item">
-                        <a class="page-link" href="/board/list?pageNo=${i}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">${i}</a>
+                        <a class="page-link"
+                           href="/board/list?pageNo=${i}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">${i}</a>
                     </li>
                 </c:forEach>
 
 
                 <c:if test="${maker.next}">
-                    <li class="page-item"><a class="page-link" href="/board/list?pageNo=${maker.end + 1}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">next</a></li>
+                    <li class="page-item"><a class="page-link"
+                                             href="/board/list?pageNo=${maker.end + 1}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">next</a>
+                    </li>
                 </c:if>
 
                 <c:if test="${maker.page.pageNo != maker.finalPage}">
-                    <li class="page-item"><a class="page-link" href="/board/list?pageNo=${maker.finalPage}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">&gt;&gt;</a>
+                    <li class="page-item"><a class="page-link"
+                                             href="/board/list?pageNo=${maker.finalPage}&amount=${s.amount}&type=${s.type}&keyword=${s.keyword}">&gt;&gt;</a>
                     </li>
                 </c:if>
 
